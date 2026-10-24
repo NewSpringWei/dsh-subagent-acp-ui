@@ -1,0 +1,10 @@
+# Bundle layer for dsh-subagent-acp-ui.
+#
+# Mounts one plugin row with an empty target list. Targets are added from the
+# Web UI: Plugins → ACP subagents, or from a conversation with the
+# `acp_targets` tool.
+- insert:
+    - id: subagent-acp-ui
+      name: dsh-subagent-acp-ui
+      config:
+        targets: []

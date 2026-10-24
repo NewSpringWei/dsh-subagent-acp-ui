@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "ACP subagents",
+    "description": "Connect any ACP agent through the official ACP provider, with a configuration page, a handshake probe, and a routing skill."
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "ACP 子智能体",
+    "description": "基于官方 ACP provider 接入任意 ACP agent，提供配置页、握手测试与路由 skill。"
+  }
+}

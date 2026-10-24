@@ -1,0 +1,57 @@
+{
+  "name": "dsh-subagent-acp-ui",
+  "version": "0.1.0",
+  "description": "Configuration page, handshake probe, and routing skill for the official DeepSeek Harness ACP subagent provider: multiple ACP targets without hand-editing YAML.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./lib/*": "./lib/*",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json",
+    "./client": "./lib/client.js"
+  },
+  "files": [
+    "lib/",
+    "skills/",
+    "cordis.patch.yml",
+    "README.md",
+    "locale/*.json"
+  ],
+  "license": "MIT",
+  "engines": {
+    "dsh": ">=0.2.0-rc.2 <0.3.0"
+  },
+  "dependencies": {
+    "@agentclientprotocol/sdk": "^1.4.0",
+    "@deepseek-ai/dsh-subagent-acp": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-tool-subagent": "0.2.1-rc.2"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=4.0.0 <5",
+    "@deepseek-ai/cosmokit": ">=1.8.0 <2",
+    "@deepseek-ai/dsh-brand": ">=0.2.0-rc.0 <0.3.0-0",
+    "@deepseek-ai/dsh-session": ">=0.2.0-rc.0 <0.3.0-0",
+    "@deepseek-ai/dsh-subagent": ">=0.2.0-rc.0 <0.3.0-0",
+    "@deepseek-ai/dsh-timeout": ">=0.2.0-rc.0 <0.3.0-0",
+    "@deepseek-ai/dsh-tools": ">=0.2.0-rc.0 <0.3.0-0",
+    "@deepseek-ai/schemastery": ">=3.18.0 <4"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-plugin-manager",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-slots"
+      ]
+    },
+    "compatibility": {
+      "node": ">=22",
+      "dsh": "0.2.1-rc.2"
+    }
+  }
+}
