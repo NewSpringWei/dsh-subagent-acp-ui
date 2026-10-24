@@ -7,6 +7,18 @@ DeepSeek Harness 的 ACP 子智能体体验层：基于官方 [`@deepseek-ai/dsh
 ## 安装
 
 ```powershell
+# 锁定版本（推荐）
+dsh plugin --profile <profile> add github:NewSpringWei/dsh-subagent-acp-ui#v0.1.0
+
+# 或跟随 main
+dsh plugin --profile <profile> add github:NewSpringWei/dsh-subagent-acp-ui
+```
+
+装好后重启实例，在「插件 → ACP 子智能体」里配置目标。
+
+本地开发时用 `file:` 指向 checkout：
+
+```powershell
 dsh plugin --profile <profile> add file:<path-to-plugin>/code
 ```
 
