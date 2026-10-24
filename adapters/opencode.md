@@ -6,7 +6,6 @@ OpenCode 是开源的 AI 编程 agent，提供终端与桌面两种形态；ACP 
 
 - 官方入口：<https://opencode.ai/>
 - 分发方式：npm 包 `@opencode/cli`（`npm i -g @opencode/cli`），也提供桌面版
-- 技术栈：TypeScript / Node.js。npm 安装后 PATH 上的 `opencode` 是 `.cmd` 包装器，实际执行 `node_modules/@opencode/cli/bin/opencode.exe`
 
 ## 适配参数
 

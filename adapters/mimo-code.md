@@ -6,7 +6,6 @@ MiMo Code 是小米的 AI 编程 agent；ACP 入口是子命令 `mimo acp`。
 
 - 官方入口：<https://mimo.xiaomi.com/zh/mimocode>
 - 分发方式：官方安装包，默认安装到 `C:\Users\<用户>\.mimocode\bin\mimo.exe`
-- 技术栈：未公开（二进制分发）
 
 ## 适配参数
 

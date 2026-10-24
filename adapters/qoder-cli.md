@@ -6,7 +6,6 @@ Qoder CLI 是 Qoder 的终端编程 agent；ACP 入口是开关 `--acp`。
 
 - 官方入口：<https://qoder.cn/cli>
 - 分发方式：官方安装包，默认安装到 `C:\Users\<用户>\.qoder-cn\bin\qoderclicn\qoderclicn.exe`
-- 技术栈：未公开（二进制分发）
 
 ## 适配参数
 
