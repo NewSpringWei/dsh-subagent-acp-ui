@@ -14,6 +14,7 @@
   "files": [
     "lib/",
     "skills/",
+    "adapters/",
     "cordis.patch.yml",
     "README.md",
     "locale/*.json"

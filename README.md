@@ -128,6 +128,16 @@ skill 是渐进披露的：只有 name / description / whenToUse 进入工具目
 
 这些都是官方 provider 的既定行为，本插件不绕过。
 
+## 新增一个已验证 agent
+
+适配数据与记录都在 `adapters/` 下，加一个 agent 不需要改代码：
+
+1. 在 `adapters/agents.json` 的 `agents` 数组追加一条：`id`、`label`、`name`（默认实例名）、`command`、`args`、`env`（模型传法）、`homepage`、`verifiedAt`、`verifiedVersion`。
+2. 新增 `adapters/<id>.md`，按现有格式记录：应用简介（含基于什么开发）、适配参数表、验证版本与耗时、适配过程中的坑。
+3. 重启实例。配置页的预设下拉与插件详情页的兼容性链接都会从这份数据生成。
+
+预设只影响「新增目标」时自动填写的值，已保存的目标不受影响。
+
 ## 与旧 `dsh-subagent-opencode` 的关系
 
 旧插件自带一套 ACP 驱动与 SSH 传输，已被官方 provider 取代。本插件剥离了 SSH（远端应当是「工作空间」，不是「子代理」），只保留体验层，并把驱动换成官方实现。

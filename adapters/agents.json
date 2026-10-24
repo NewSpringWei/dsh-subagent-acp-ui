@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "agents": [
+    {
+      "id": "opencode",
+      "label": "OpenCode",
+      "name": "opencode",
+      "command": "opencode",
+      "args": ["acp"],
+      "env": { "OPENCODE_CONFIG_CONTENT": "{\"model\":\"{model}\"}" },
+      "homepage": "https://opencode.ai/",
+      "verifiedAt": "2026-10-24",
+      "verifiedVersion": "2.1.4"
+    },
+    {
+      "id": "qoder",
+      "label": "Qoder CLI",
+      "name": "qoder",
+      "command": "qoderclicn",
+      "args": ["--acp", "--model", "{model}"],
+      "env": {},
+      "homepage": "https://qoder.cn/cli",
+      "verifiedAt": "2026-10-24",
+      "verifiedVersion": ""
+    },
+    {
+      "id": "mimo",
+      "label": "MiMo Code",
+      "name": "mimo",
+      "command": "mimo",
+      "args": ["acp"],
+      "env": { "MIMOCODE_CONFIG_CONTENT": "{\"model\":\"{model}\"}" },
+      "homepage": "https://mimo.xiaomi.com/zh/mimocode",
+      "verifiedAt": "2026-10-24",
+      "verifiedVersion": ""
+    }
+  ]
+}
