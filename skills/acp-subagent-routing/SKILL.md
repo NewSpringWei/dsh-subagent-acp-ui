@@ -6,7 +6,8 @@
 
 `acp_targets` 同时管理目标配置，不必让用户去插件页：
 
-- `list` 查看目标；`test` 做免费握手（不消耗模型 token）。
+- `list` 查看目标。
+- 检查连通性分两层：`test`（默认）只做 ACP 握手并返回模型列表，**不消耗模型 token**；`test` 传 `mode="verify"` 会真实发送一次短提示，**消耗少量 token**，用于确认端到端确实可用。日常排障先用默认探测，需要最终确认再用 verify。
 - `add` / `update` / `remove` 增删改目标；保存后立即重建 provider 与委派工具，无需重启。
 - 新增时至少提供 `name` 与 `command`。实例名决定 provider 与工具名，必须唯一。
 - 模型传法因 CLI 而异：在 `args` 或 `env` 的值里写 `{model}` 占位符（例如 Qoder 用 `--model {model}`，OpenCode/MiMo 用对应的 `*_CONFIG_CONTENT` 环境变量）。不确定时先问用户，或让用户在配置页用预设与「浏览…」完成。
@@ -64,7 +65,7 @@ Subagent failure (provider: ACP; stage: <stage>; category: <category>; ...)
 
 1. **定位阶段**：`stage` 说明卡在哪一步——`process`（进程起不来）、`initialize`（握手）、`new-session`（建会话）、`prompt`（执行中）、`teardown`（收尾）。
 2. **读原始事实**：错误消息、`exit code`、`signal`。探测失败时还会附带该 CLI 的 stderr 尾部——多数 CLI 会自己写明原因（未登录、未知参数、命令不存在等）。
-3. **复现一次**：用 `acp_targets` 的 test 重跑，确认错误稳定并拿到阶段。这个握手测试不消耗模型 token；配置页弹窗里的「测试」会真实调用模型，两者不同。
+3. **复现一次**：用 `acp_targets` 的 test 重跑，确认错误稳定并拿到阶段。默认探测只做握手、**不消耗 token**；需要确认端到端真的可用时再加 `mode="verify"`，那次会**消耗少量 token**（配置页弹窗里的「测试」等价于 verify）。
 4. **归因到最小可验证假设**，一次只验证一条：
    - 路径与可执行性：命令是否存在、能否执行、参数是否被该 CLI 接受
    - 认证：让用户在终端手动跑一次该 CLI，确认登录态
