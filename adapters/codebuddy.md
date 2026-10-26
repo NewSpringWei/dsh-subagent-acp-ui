@@ -30,6 +30,13 @@ CodeBuddy Code 是腾讯云代码助手 CodeBuddy 的命令行智能体，原生
 | 握手耗时 | 约 3.8 s |
 | 已验证能力 | 握手、模型列表（19 个）、`--model` 参数 |
 
+## 安装方式与启动解析
+
+CodeBuddy Code 通过 **npm 全局安装** 分发（`npm i -g @tencent-ai/codebuddy-code`）。它的 shim 是 `node "<script>"` 形式，不是 OpenCode 那种 `.exe` 包装器：
+
+- `.exe` 包装器（OpenCode）：插件能解析出真实 exe，直接 spawn
+- `node "<script>"`（CodeBuddy）：解析器无法还原启动参数，只能用 `cmd` + `/c codebuddy ...` 交给系统 shell
+
 ## 适配过程与坑
 
 1. **npm shim 不是 `.exe`**：`codebuddy.cmd` 的内容是 `node "<pkg>/bin/codebuddy"`，不是 opencode 那种 `*.exe` 包装器。DSH 直接 spawn `.cmd` 会得到 `ACP connection closed`，我们的命令解析器也解析不出可执行文件。解决方式是启动命令用 `cmd`、参数以 `/c codebuddy ...` 开头，让系统 shell 自己去解析 PATH 上的 shim。

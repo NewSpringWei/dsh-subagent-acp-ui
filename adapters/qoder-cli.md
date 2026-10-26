@@ -27,6 +27,10 @@ Qoder CLI 是 Qoder 的终端编程 agent；ACP 入口是开关 `--acp`。
 | 握手耗时 | 约 1.5 s |
 | 已验证能力 | 握手、模型列表、真实测试（verify）、`/acp-qoder` 命令注册 |
 
+## 安装方式与启动解析
+
+Qoder CLI 通过 **官方安装器** 分发，安装后 PATH 上是真实 `qoderclicn.exe`，可直接 spawn，不需要 shim 解析。若某次安装没有写入 PATH，用「浏览…」选定绝对路径即可。
+
 ## 适配过程与坑
 
 1. **ACP 入口是开关而不是子命令**：必须写 `--acp`（不是 `acp`），写错会被 CLI 当成未知参数直接退出。

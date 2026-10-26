@@ -9,6 +9,10 @@
       "args": ["acp"],
       "env": { "OPENCODE_CONFIG_CONTENT": "{\"model\":\"{model}\"}" },
       "homepage": "https://opencode.ai/",
+      "install": "npm",
+      "installLabel": "npm 全局安装（Node.js 环境）",
+      "installNote": "PATH 上是 .cmd shim，插件会自动解析到内部 exe；若升级后 shim 变成 node 脚本形式，改用 cmd /c 启动或浏览选定 exe。",
+      "summary": "已验证：握手、模型列表、真实测试。模型走 OPENCODE_CONFIG_CONTENT 环境变量。",
       "verifiedAt": "2026-10-24",
       "verifiedVersion": "2.1.4"
     },
@@ -20,6 +24,10 @@
       "args": ["--acp", "--model", "{model}"],
       "env": {},
       "homepage": "https://qoder.cn/cli",
+      "install": "installer",
+      "installLabel": "官方安装器（安装包）",
+      "installNote": "安装包提供真实 .exe，可直接 spawn，路径相对固定。",
+      "summary": "已验证：握手、模型列表、真实测试。模型走 --model 参数。",
       "verifiedAt": "2026-10-24",
       "verifiedVersion": ""
     },
@@ -31,6 +39,10 @@
       "args": ["acp"],
       "env": { "MIMOCODE_CONFIG_CONTENT": "{\"model\":\"{model}\"}" },
       "homepage": "https://mimo.xiaomi.com/zh/mimocode",
+      "install": "installer",
+      "installLabel": "官方安装器（安装包）",
+      "installNote": "安装包提供真实 .exe，可直接 spawn；冷启动较慢（约 4.4s）。",
+      "summary": "已验证：握手、模型列表、真实测试。模型走 MIMOCODE_CONFIG_CONTENT 环境变量。",
       "verifiedAt": "2026-10-24",
       "verifiedVersion": ""
     },
@@ -42,6 +54,10 @@
       "args": ["/c", "codebuddy", "--acp", "--model", "{model}"],
       "env": {},
       "homepage": "https://www.codebuddy.cn/cli/",
+      "install": "npm",
+      "installLabel": "npm 全局安装（Node.js 环境）",
+      "installNote": "shim 是 node 脚本形式（非 .exe），需经 cmd /c 启动。",
+      "summary": "已验证：握手、模型列表、真实测试。模型走 --model 参数。",
       "verifiedAt": "2026-10-26",
       "verifiedVersion": "2.176.0"
     }
