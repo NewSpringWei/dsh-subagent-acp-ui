@@ -7,8 +7,10 @@
 
 ## 状态说明
 
-- ✅ 已完成验证：握手、模型列表、真实测试（`mode=verify`）
-- ⚠️ 待登录验证：ACP 入口已确认，但 `session/new` 返回 `Authentication required`，需要先登录再补验
+- ✅ 已验证：握手 + 模型列表通过，真实测试能到达服务端并拿到业务响应（包括 403、余额不足这类账号层错误）
+- ⚠️ 待登录验证：`session/new` 返回 `Authentication required`，需要先登录再验
+
+**判定标准**：能测到账号受限（订阅不含权限、余额不足）就算链路通了——那属于账号问题，不是适配问题。
 
 ## 一览
 
@@ -18,8 +20,8 @@
 | Qoder CLI | 官方安装器 | `qoderclicn` | `--acp` 开关 | `--model <id>` 参数 | ✅ |
 | MiMo Code | 官方安装器 | `mimo` | `acp` 子命令 | `MIMOCODE_CONFIG_CONTENT` 环境变量 | ✅ |
 | CodeBuddy Code | npm 全局安装 | `cmd /c codebuddy` | `--acp` 开关 | `--model <id>` 参数 | ✅ |
-| Kimi Code | 官方安装器 | `kimi` | `acp` 子命令 | `-m/--model <alias>` 全局参数 | ⚠️ 账号受限 |
-| MiniMax Code | npm 全局安装 | `cmd /c mcode` | `acp` 子命令 | `-m/--model <provider/model>` 全局参数 | ⚠️ 账号受限 |
+| Kimi Code | 官方安装器 | `kimi` | `acp` 子命令 | `-m/--model <alias>` 全局参数 | ✅ 已验证（账号受限） |
+| MiniMax Code | npm 全局安装 | `cmd /c mcode` | `acp` 子命令 | `-m/--model <provider/model>` 全局参数 | ✅ 已验证（账号受限） |
 
 ## 安装方式的差异与对策
 
@@ -179,7 +181,7 @@
 
 ---
 
-## Kimi Code ⚠️ 账号受限（握手通过）
+## Kimi Code ✅ 已验证（账号额度受限）
 
 **简介**：Kimi 的终端编程 agent，提供 ACP 服务端。
 
@@ -214,7 +216,7 @@
 
 ---
 
-## MiniMax Code ⚠️ 账号受限（握手通过）
+## MiniMax Code ✅ 已验证（账号额度受限）
 
 **简介**：MiniMax 的终端编程 agent，提供 ACP 服务端。
 

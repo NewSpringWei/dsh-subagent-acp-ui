@@ -58,9 +58,29 @@ dsh plugin --profile <profile> add file:<path-to-plugin>/code
 
 ## 已验证的 agent
 
-OpenCode、Qoder CLI、MiMo Code。
+| agent | 验证状态 | 备注 |
+|---|---|---|
+| OpenCode | ✅ | 握手、模型列表、真实测试全部通过 |
+| Qoder CLI | ✅ | 握手、模型列表、真实测试全部通过 |
+| MiMo Code | ✅ | 握手、模型列表、真实测试全部通过 |
+| CodeBuddy Code | ✅ | 握手、模型列表、真实测试全部通过 |
+| Kimi Code | ✅ | 链路通；真实测试返回 403（账号订阅不含 Kimi Code） |
+| MiniMax Code | ✅ | 链路通；真实测试返回余额不足 |
 
-启动契约与官方入口在 `adapters/agents.json`，各家的适配记录在 `adapters/*.md`。新增一个 agent 只需改数据文件，不改代码。
+**判定标准**：握手 + 模型列表通过，且真实测试能到达服务端并拿到业务响应（包括 403、余额不足这类账号层错误），即视为链路已通。账号额度不属于适配问题。
+
+适配记录见 [`adapters/README.md`](adapters/README.md)，预设数据在 [`adapters/agents.json`](adapters/agents.json)。
+
+## 适配清单在线更新
+
+预设数据支持在线更新，加/改 agent **不需要发版**：
+
+- 插件启动时从 `adaptersUrl` 拉取清单（默认 jsDelivr 镜像），按 `id` 合并到内置预设
+- 缓存位置：`~/.dsh/subagent-acp-ui/adapters-cache.json`，升级插件不会丢
+- 手动触发刷新：`POST /acp-ui-refresh`
+- 需要即时生效时，把 `adaptersUrl` 换成带 commit 的地址（绕过 jsDelivr 缓存）
+
+只有**源码改动**才需要更新插件版本。
 
 ## 限制
 

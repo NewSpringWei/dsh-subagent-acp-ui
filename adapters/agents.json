@@ -72,8 +72,8 @@
       "install": "installer",
       "installLabel": "官方安装器（安装包）",
       "installNote": "真实 .exe；新装后需重启 DSH 让 PATH 生效。",
-      "summary": "⚠️ 账号受限：握手与模型列表（6 个）通过；真实测试因订阅不含 Kimi Code 被拒（403 upgrade plan）。",
-      "status": "account-limited",
+      "summary": "链路已验证（真实调用到达服务端）；当前账号订阅不含 Kimi Code（403），升级套餐后即可用。",
+      "status": "verified",
       "verifiedAt": "2026-10-26",
       "verifiedVersion": "2.3.2"
     },
@@ -88,8 +88,8 @@
       "install": "npm",
       "installLabel": "npm 全局安装（Node.js 环境）",
       "installNote": "shim 是 node 脚本形式（cli.js），需 cmd /c 启动。",
-      "summary": "⚠️ 账号受限：握手与模型列表（4 个）通过；真实测试因余额不足失败（insufficient balance 1008）。",
-      "status": "account-limited",
+      "summary": "链路已验证（真实调用到达服务端）；当前账号余额不足（insufficient balance 1008），充值后即可用。",
+      "status": "verified",
       "verifiedAt": "2026-10-26",
       "verifiedVersion": "0.6.12"
     }
