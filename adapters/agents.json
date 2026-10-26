@@ -33,6 +33,17 @@
       "homepage": "https://mimo.xiaomi.com/zh/mimocode",
       "verifiedAt": "2026-10-24",
       "verifiedVersion": ""
+    },
+    {
+      "id": "codebuddy",
+      "label": "CodeBuddy Code",
+      "name": "codebuddy",
+      "command": "cmd",
+      "args": ["/c", "codebuddy", "--acp", "--model", "{model}"],
+      "env": {},
+      "homepage": "https://www.codebuddy.cn/cli/",
+      "verifiedAt": "2026-10-26",
+      "verifiedVersion": "2.176.0"
     }
   ]
 }
