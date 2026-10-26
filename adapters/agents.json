@@ -60,6 +60,38 @@
       "summary": "已验证：握手、模型列表、真实测试。模型走 --model 参数。",
       "verifiedAt": "2026-10-26",
       "verifiedVersion": "2.176.0"
+    },
+    {
+      "id": "kimi",
+      "label": "Kimi Code",
+      "name": "kimi",
+      "command": "kimi",
+      "args": ["-m", "{model}", "acp"],
+      "env": {},
+      "homepage": "https://www.kimi.com/",
+      "install": "installer",
+      "installLabel": "官方安装器（安装包）",
+      "installNote": "真实 .exe；新装后需重启 DSH 让 PATH 生效。",
+      "summary": "⚠️ 待登录验证：session/new 返回 Authentication required，需先 `kimi acp --login` 完成登录。",
+      "status": "pending-login",
+      "verifiedAt": "2026-10-26",
+      "verifiedVersion": "2.3.2"
+    },
+    {
+      "id": "minimax",
+      "label": "MiniMax Code",
+      "name": "minimax",
+      "command": "cmd",
+      "args": ["/c", "mcode", "-m", "{model}", "acp"],
+      "env": {},
+      "homepage": "https://agent.minimax.cn/docs/cli/integrations",
+      "install": "npm",
+      "installLabel": "npm 全局安装（Node.js 环境）",
+      "installNote": "shim 是 node 脚本形式（cli.js），需 cmd /c 启动。",
+      "summary": "⚠️ 待登录验证：session/new 返回 Authentication required，需先 `mcode login` 完成登录。",
+      "status": "pending-login",
+      "verifiedAt": "2026-10-26",
+      "verifiedVersion": "0.6.12"
     }
   ]
 }
