@@ -18,8 +18,8 @@
 | Qoder CLI | 官方安装器 | `qoderclicn` | `--acp` 开关 | `--model <id>` 参数 | ✅ |
 | MiMo Code | 官方安装器 | `mimo` | `acp` 子命令 | `MIMOCODE_CONFIG_CONTENT` 环境变量 | ✅ |
 | CodeBuddy Code | npm 全局安装 | `cmd /c codebuddy` | `--acp` 开关 | `--model <id>` 参数 | ✅ |
-| Kimi Code | 官方安装器 | `kimi` | `acp` 子命令 | `-m/--model <alias>` 全局参数 | ⚠️ |
-| MiniMax Code | npm 全局安装 | `cmd /c mcode` | `acp` 子命令 | `-m/--model <provider/model>` 全局参数 | ⚠️ |
+| Kimi Code | 官方安装器 | `kimi` | `acp` 子命令 | `-m/--model <alias>` 全局参数 | ⚠️ 账号受限 |
+| MiniMax Code | npm 全局安装 | `cmd /c mcode` | `acp` 子命令 | `-m/--model <provider/model>` 全局参数 | ⚠️ 账号受限 |
 
 ## 安装方式的差异与对策
 
@@ -179,35 +179,42 @@
 
 ---
 
-## Kimi Code ⚠️ 待登录验证
+## Kimi Code ⚠️ 账号受限（握手通过）
 
 **简介**：Kimi 的终端编程 agent，提供 ACP 服务端。
 
 - 官方入口：<https://www.kimi.com/>
 - 安装方式：**官方安装器**，默认装到 `C:\Users\<用户>\.kimi-code\bin\kimi.exe`
-- PATH 上：真实 `.exe`；新装后需要重启 DSH，PATH 才会带进来
+- PATH 上：真实 `.exe`；新装后需要重启 DSH，会话 PATH 才会带进来（未重启时可用绝对路径）
 
-**适配参数（待登录后确认）**
+**适配参数**
 
 | 项 | 值 |
 |---|---|
 | 启动命令 | `kimi` |
 | 启动参数 | `-m {model} acp`（全局选项在子命令前；留空则省略 `-m`） |
 | 模型传法 | `-m/--model <alias>` 全局参数 |
-| 登录方式 | `kimi acp --login`（设备码登录，ACP 终端认证），`--region mainland-cn\|global` |
+| 模型列表 | 实测 6 个 |
+| 当前模型 | `kimi-code/kimi-for-coding`（显示名 `K2.8 Preview`） |
+| 登录方式 | `kimi acp --login`（设备码登录），`--region mainland-cn\|global` |
 
-**探测结果（2026-10-26，v2.3.2，未登录）**
+**验证记录**
 
-```
-阶段 new-session：Authentication required
-stderr: acp: auth readiness probe failed … no provider configured; complete onboarding via /login or the providers endpoint
-```
+| 项 | 值 |
+|---|---|
+| 验证时间 | 2026-10-26 |
+| 验证版本 | 2.3.2 |
+| 握手耗时 | 约 1.0 s |
+| 已验证能力 | 握手、模型列表（6 个） |
+| 未通过项 | 真实测试：`403 Your current subscription does not have access to Kimi Code right now`（订阅不含 Kimi Code，需升级套餐） |
 
-**结论**：ACP 入口确认存在，但 `session/new` 强制要求已登录。需要先登录再补验模型列表与真实测试。
+**模型列表**（6）：`kimi-code/kimi-for-coding`（K2.8 Preview）、`kimi-code/kimi-for-coding-highspeed`（K2.7 Code Highspeed）、`kimi-code/k3`、`kimi-code/k3-256k`、`kimi-code/k3.1-pro`、`kimi-code/k3.1-pro-highspeed`
+
+**结论**：适配层面可用（入口、模型列表、启动方式都已确认）；真实委派受账号订阅限制，升级套餐后即可用。
 
 ---
 
-## MiniMax Code ⚠️ 待登录验证
+## MiniMax Code ⚠️ 账号受限（握手通过）
 
 **简介**：MiniMax 的终端编程 agent，提供 ACP 服务端。
 
@@ -215,19 +222,27 @@ stderr: acp: auth readiness probe failed … no provider configured; complete on
 - 安装方式：**npm 全局安装** `npm i -g @minimax-ai/code`，命令 `mcode`
 - PATH 上：`node ".../@minimax-ai/code/cli.js"` 型 shim → 必须 `cmd /c`
 
-**适配参数（待登录后确认）**
+**适配参数**
 
 | 项 | 值 |
 |---|---|
 | 启动命令 | `cmd` |
 | 启动参数 | `/c mcode -m {model} acp`（留空则省略 `-m`） |
 | 模型传法 | `-m/--model <provider/model>` 全局参数 |
+| 模型列表 | 实测 4 个 |
+| 当前模型 | `m:minimax:MiniMax-M3.1-Flash:v:thinking`（显示名 `M3.1-Flash · thinking`） |
 | 登录方式 | `mcode login` |
 
-**探测结果（2026-10-26，v0.6.12，未登录）**
+**验证记录**
 
-```
-阶段 new-session：Authentication required: Run `mcode login` and try again.
-```
+| 项 | 值 |
+|---|---|
+| 验证时间 | 2026-10-26 |
+| 验证版本 | 0.6.12（npm） |
+| 握手耗时 | 约 8.7 s |
+| 已验证能力 | 握手、模型列表（4 个） |
+| 未通过项 | 真实测试：`Internal error: MiniMax Code Runtime failed: insufficient balance (1008)`（余额不足） |
 
-**结论**：ACP 入口确认存在，但 `session/new` 强制要求已登录。需要先登录再补验模型列表与真实测试。
+**模型列表**（4）：`m:minimax:MiniMax-M3.1-Flash:v:`（M3.1-Flash）、`m:minimax:MiniMax-M3.1-Flash:v:thinking`（M3.1-Flash · thinking）、`m:minimax:MiniMax-M3:v:`（M3）、`m:minimax:MiniMax-M3:v:thinking`（M3 · thinking）
+
+**结论**：适配层面可用；真实委派受账号余额限制，充值后即可用。
