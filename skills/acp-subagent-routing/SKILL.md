@@ -91,3 +91,4 @@ Subagent failure (provider: ACP; stage: <stage>; category: <category>; ...)
 - 不支持在调用时选择子智能体模型：模型在配置页按目标全局固定（该 CLI 的默认值或指定值）。
 - 不支持委派深度上限、preset、结构化输出。
 - 没有进程池：每次委派都要付一次进程启动与 ACP 握手成本。高频小任务不如自己做。
+- 子智能体的权限请求由目标自身的 `permission` 策略（`allow` / `reject`）当场应答，不会上浮到主会话，也不会转交给主智能体审批。

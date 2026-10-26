@@ -29,7 +29,7 @@
       "installNote": "安装包提供真实 .exe，可直接 spawn，路径相对固定。",
       "summary": "已验证：握手、模型列表、真实测试。模型走 --model 参数。",
       "verifiedAt": "2026-10-24",
-      "verifiedVersion": ""
+      "verifiedVersion": "1.1.78"
     },
     {
       "id": "mimo",
@@ -44,7 +44,7 @@
       "installNote": "安装包提供真实 .exe，可直接 spawn；冷启动较慢（约 4.4s）。",
       "summary": "已验证：握手、模型列表、真实测试。模型走 MIMOCODE_CONFIG_CONTENT 环境变量。",
       "verifiedAt": "2026-10-24",
-      "verifiedVersion": ""
+      "verifiedVersion": "0.1.15"
     },
     {
       "id": "codebuddy",
