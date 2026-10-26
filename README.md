@@ -58,16 +58,7 @@ dsh plugin --profile <profile> add file:<path-to-plugin>/code
 
 ## 已验证的 agent
 
-| agent | 验证状态 | 备注 |
-|---|---|---|
-| OpenCode | ✅ | 握手、模型列表、真实测试全部通过 |
-| Qoder CLI | ✅ | 握手、模型列表、真实测试全部通过 |
-| MiMo Code | ✅ | 握手、模型列表、真实测试全部通过 |
-| CodeBuddy Code | ✅ | 握手、模型列表、真实测试全部通过 |
-| Kimi Code | ✅ | 链路通；真实测试返回 403（账号订阅不含 Kimi Code） |
-| MiniMax Code | ✅ | 链路通；真实测试返回余额不足 |
-
-**判定标准**：握手 + 模型列表通过，且真实测试能到达服务端并拿到业务响应（包括 403、余额不足这类账号层错误），即视为链路已通。账号额度不属于适配问题。
+OpenCode、Qoder CLI、MiMo Code、CodeBuddy Code、Kimi Code、MiniMax Code。
 
 适配记录见 [`adapters/README.md`](adapters/README.md)，预设数据在 [`adapters/agents.json`](adapters/agents.json)。
 

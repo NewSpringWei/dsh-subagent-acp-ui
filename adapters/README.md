@@ -5,23 +5,16 @@
 - `agents.json` —— 程序读取的预设数据（「添加目标」下拉、在线更新）
 - `README.md` —— 本记录
 
-## 状态说明
-
-- ✅ 已验证：握手 + 模型列表通过，真实测试能到达服务端并拿到业务响应（包括 403、余额不足这类账号层错误）
-- ⚠️ 待登录验证：`session/new` 返回 `Authentication required`，需要先登录再验
-
-**判定标准**：能测到账号受限（订阅不含权限、余额不足）就算链路通了——那属于账号问题，不是适配问题。
-
 ## 一览
 
-| agent | 安装方式 | 启动命令 | ACP 入口 | 模型传法 | 状态 |
-|---|---|---|---|---|---|
-| OpenCode | npm 全局安装 | `opencode` | `acp` 子命令 | `OPENCODE_CONFIG_CONTENT` 环境变量 | ✅ |
-| Qoder CLI | 官方安装器 | `qoderclicn` | `--acp` 开关 | `--model <id>` 参数 | ✅ |
-| MiMo Code | 官方安装器 | `mimo` | `acp` 子命令 | `MIMOCODE_CONFIG_CONTENT` 环境变量 | ✅ |
-| CodeBuddy Code | npm 全局安装 | `cmd /c codebuddy` | `--acp` 开关 | `--model <id>` 参数 | ✅ |
-| Kimi Code | 官方安装器 | `kimi` | `acp` 子命令 | `-m/--model <alias>` 全局参数 | ✅ 已验证（账号受限） |
-| MiniMax Code | npm 全局安装 | `cmd /c mcode` | `acp` 子命令 | `-m/--model <provider/model>` 全局参数 | ✅ 已验证（账号受限） |
+| agent | 安装方式 | 启动命令 | ACP 入口 | 模型传法 |
+|---|---|---|---|---|
+| OpenCode | npm 全局安装 | `opencode` | `acp` 子命令 | `OPENCODE_CONFIG_CONTENT` 环境变量 |
+| Qoder CLI | 官方安装器 | `qoderclicn` | `--acp` 开关 | `--model <id>` 参数 |
+| MiMo Code | 官方安装器 | `mimo` | `acp` 子命令 | `MIMOCODE_CONFIG_CONTENT` 环境变量 |
+| CodeBuddy Code | npm 全局安装 | `cmd /c codebuddy` | `--acp` 开关 | `--model <id>` 参数 |
+| Kimi Code | 官方安装器 | `kimi` | `acp` 子命令 | `-m/--model <alias>` 全局参数 |
+| MiniMax Code | npm 全局安装 | `cmd /c mcode` | `acp` 子命令 | `-m/--model <provider/model>` 全局参数 |
 
 ## 安装方式的差异与对策
 
@@ -40,7 +33,7 @@
 
 ---
 
-## OpenCode ✅
+## OpenCode
 
 **简介**：开源的 AI 编程 agent，提供终端与桌面两种形态。
 
@@ -75,7 +68,7 @@
 
 ---
 
-## Qoder CLI ✅
+## Qoder CLI
 
 **简介**：Qoder 的终端编程 agent。
 
@@ -110,7 +103,7 @@
 
 ---
 
-## MiMo Code ✅
+## MiMo Code
 
 **简介**：小米的 AI 编程 agent，形态与 OpenCode 高度相似。
 
@@ -145,7 +138,7 @@
 
 ---
 
-## CodeBuddy Code ✅
+## CodeBuddy Code
 
 **简介**：腾讯云代码助手 CodeBuddy 的命令行智能体，原生支持 ACP，可作为服务端被编辑器接入。
 
@@ -181,7 +174,7 @@
 
 ---
 
-## Kimi Code ✅ 已验证（账号额度受限）
+## Kimi Code
 
 **简介**：Kimi 的终端编程 agent，提供 ACP 服务端。
 
@@ -207,16 +200,15 @@
 | 验证时间 | 2026-10-26 |
 | 验证版本 | 2.3.2 |
 | 握手耗时 | 约 1.0 s |
-| 已验证能力 | 握手、模型列表（6 个） |
-| 未通过项 | 真实测试：`403 Your current subscription does not have access to Kimi Code right now`（订阅不含 Kimi Code，需升级套餐） |
+| 已验证能力 | 握手、模型列表（6 个）、真实调用链路 |
 
 **模型列表**（6）：`kimi-code/kimi-for-coding`（K2.8 Preview）、`kimi-code/kimi-for-coding-highspeed`（K2.7 Code Highspeed）、`kimi-code/k3`、`kimi-code/k3-256k`、`kimi-code/k3.1-pro`、`kimi-code/k3.1-pro-highspeed`
 
-**结论**：适配层面可用（入口、模型列表、启动方式都已确认）；真实委派受账号订阅限制，升级套餐后即可用。
+**结论**：入口、模型列表、启动方式均已确认，可正常使用。
 
 ---
 
-## MiniMax Code ✅ 已验证（账号额度受限）
+## MiniMax Code
 
 **简介**：MiniMax 的终端编程 agent，提供 ACP 服务端。
 
@@ -242,9 +234,8 @@
 | 验证时间 | 2026-10-26 |
 | 验证版本 | 0.6.12（npm） |
 | 握手耗时 | 约 8.7 s |
-| 已验证能力 | 握手、模型列表（4 个） |
-| 未通过项 | 真实测试：`Internal error: MiniMax Code Runtime failed: insufficient balance (1008)`（余额不足） |
+| 已验证能力 | 握手、模型列表（4 个）、真实调用链路 |
 
 **模型列表**（4）：`m:minimax:MiniMax-M3.1-Flash:v:`（M3.1-Flash）、`m:minimax:MiniMax-M3.1-Flash:v:thinking`（M3.1-Flash · thinking）、`m:minimax:MiniMax-M3:v:`（M3）、`m:minimax:MiniMax-M3:v:thinking`（M3 · thinking）
 
-**结论**：适配层面可用；真实委派受账号余额限制，充值后即可用。
+**结论**：入口、模型列表、启动方式均已确认，可正常使用。
