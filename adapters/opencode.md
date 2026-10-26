@@ -22,6 +22,7 @@ OpenCode 是开源的 AI 编程 agent，提供终端与桌面两种形态；ACP 
 | 项 | 值 |
 |---|---|
 | 验证时间 | 2026-10-24 |
+| 安装方式 | **Node.js 环境（npm 全局安装）**：`npm i -g @opencode/cli` |
 | 验证版本 | opencode v2.1.4（npm） |
 | 握手耗时 | 约 1.5 s |
 | 已验证能力 | 握手、模型列表、真实测试（verify）、`/acp-opencode` 命令注册 |

@@ -25,6 +25,7 @@ CodeBuddy Code 是腾讯云代码助手 CodeBuddy 的命令行智能体，原生
 | 项 | 值 |
 |---|---|
 | 验证时间 | 2026-10-26 |
+| 安装方式 | **Node.js 环境（npm 全局安装）**：`npm i -g @tencent-ai/codebuddy-code` |
 | 验证版本 | 2.176.0（npm） |
 | 握手耗时 | 约 3.8 s |
 | 已验证能力 | 握手、模型列表（19 个）、`--model` 参数 |
