@@ -37,7 +37,9 @@
     "cordis.patch.yml",
     "README.md",
     "LICENSE",
-    "locale/*.json"
+    "locale/*.json",
+    "assets/",
+    "screenshots.json"
   ],
   "license": "MIT",
   "engines": {
