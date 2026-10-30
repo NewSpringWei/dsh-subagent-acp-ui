@@ -84,3 +84,95 @@ OpenCode、Qoder CLI、MiMo Code、CodeBuddy Code、Kimi Code、MiniMax Code。
 ## 许可证
 
 [MIT](LICENSE)
+
+---
+
+## English
+
+The ACP subagent UX layer for DeepSeek Harness: builds on the official [`@deepseek-ai/dsh-subagent-acp`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-acp) provider to connect several ACP agents, with a configuration page, a connectivity probe, and a routing skill.
+
+It does **not** implement any ACP client: each target mounts one official provider and one official `dsh-tool-subagent` instance, so protocol behavior is identical to the official one.
+
+### Installation
+
+```powershell
+# pinned version (recommended)
+dsh plugin --profile <profile> add github:NewSpringWei/dsh-subagent-acp-ui#v0.1.0
+
+# or follow main
+dsh plugin --profile <profile> add github:NewSpringWei/dsh-subagent-acp-ui
+```
+
+Restart the instance after installing, then configure targets under "Plugins → ACP Subagents".
+
+For local development, point `file:` at the checkout:
+
+```powershell
+dsh plugin --profile <profile> add file:<path-to-plugin>/code
+```
+
+### Configuration
+
+Add targets under "Plugins → ACP Subagents" (picking a verified agent auto-fills the launch command and model passing), or write the config directly:
+
+```yaml
+- id: subagent-acp-ui
+  name: dsh-subagent-acp-ui
+  config:
+    targets:
+      - name: opencode
+        command: opencode
+        args: ['acp']
+        model: opencode/glm-5.3-flash-free
+        env:
+          OPENCODE_CONFIG_CONTENT: '{"model":"{model}"}'
+```
+
+Each target needs an executable, ACP launch arguments, and a logged-in CLI. `args` / `env` may contain a `{model}` placeholder that is expanded from the `model` field on save; leave `model` empty to omit that argument.
+
+The plugin also ships an entry-placement card with one live switch per surface (left sidebar, Settings navigation, Plugins tab), so where the plugin appears is configurable without a save button.
+
+### What it provides
+
+For each enabled target:
+
+| Artifact | Name |
+|---|---|
+| Subagent provider | `acp_<target>` |
+| Delegation tool | `subagent_acp_<target>` |
+| Exact command | `/acp-<target> <task>` |
+
+It also registers:
+
+- the `acp_targets` tool — add, edit, inspect, or remove targets in-session; `test` performs a free handshake, `test mode="verify"` spends a few tokens on a real check
+- the `acp-subagent-routing` skill — when to delegate, how to split tasks, how to analyze failures
+
+### Verified agents
+
+OpenCode, Qoder CLI, MiMo Code, CodeBuddy Code, Kimi Code, MiniMax Code.
+
+See [`adapters/README.md`](adapters/README.md) for adaptation notes and [`adapters/agents.json`](adapters/agents.json) for preset data.
+
+### Online adapter updates
+
+Preset data supports online updates, so adding or changing an agent does **not** require a release:
+
+- on startup the plugin fetches the adapter list from `adaptersUrl` (jsDelivr by default) and merges it into the built-in presets by `id`
+- cache: `~/.dsh/subagent-acp-ui/adapters-cache.json`, preserved across upgrades
+- manual refresh: `POST /acp-ui-refresh`
+- to apply immediately, use a commit-pinned URL for `adaptersUrl` (bypasses the jsDelivr cache)
+
+Only **source changes** require a plugin version bump.
+
+### Limitations
+
+- no per-call model selection: the model is fixed per target
+- no resume: every delegation is a one-shot run
+- no process pool: each delegation pays process startup and handshake cost
+
+These are established behaviors of the official provider and are not worked around by this plugin.
+
+### License
+
+[MIT](LICENSE)
+
