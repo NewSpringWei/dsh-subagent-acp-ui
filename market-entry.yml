@@ -1,10 +1,9 @@
 # 收录条目草稿（提交到 awesome-dsh-plugin 时用）
 # 提 PR 时把本文件复制为 fork 仓库中的 data/plugins/NewSpringWei__dsh-subagent-acp-ui.yml，
 # 并删除本注释块；本仓库保留此文件仅作草稿与自查用。
-# 描述以中文为主、英文为辅：中文是主体说明，英文是简短辅助翻译。
 url: https://github.com/NewSpringWei/dsh-subagent-acp-ui
 name: NewSpringWei/dsh-subagent-acp-ui
 category: ui
 description:
-  zh: '为 DeepSeek Harness 官方 ACP 子智能体 provider 提供目标管理页：一键预设多个 ACP agent、只读连通性检测，以及侧边栏 / 设置导航 / 设置-插件页三个入口的实时开关，支持在线更新预设数据。'
-  en: 'Management page for the official DeepSeek Harness ACP subagent provider: one-click presets, a read-only connectivity check, and live switches for all three entry points.'
+  en: "Adds a management page, a connectivity probe, and live entry switches for the official DeepSeek Harness ACP subagent provider, wiring several ACP agents in as delegatable subagents."
+  zh: "为 DeepSeek Harness 官方 ACP 子智能体 provider 提供目标管理页、连通性检测与入口开关，把多个 ACP agent 接入为可委派的子智能体。"
