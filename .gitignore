@@ -3,6 +3,7 @@ node_modules/
 .DS_Store
 Thumbs.db
 .tmp/
+.tmp-*/
 .mimosa/
 
 # local npm pack output (never committed)

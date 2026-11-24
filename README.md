@@ -8,13 +8,15 @@ DeepSeek Harness 的 ACP 子智能体体验层：基于官方 [`@deepseek-ai/dsh
 
 ```powershell
 # 锁定版本（推荐）
-dsh plugin --profile <profile> add github:NewSpringWei/dsh-subagent-acp-ui#v0.1.0
+dsh plugin --profile <profile> add github:NewSpringWei/dsh-subagent-acp-ui#v0.1.1
 
 # 或跟随 main
 dsh plugin --profile <profile> add github:NewSpringWei/dsh-subagent-acp-ui
 ```
 
 装好后重启实例，在「插件 → ACP 子智能体」里配置目标。
+
+> **兼容性**：`0.1.1` 起要求 DSH ≥ `0.2.2-rc.5`（见 `engines.dsh`，peer 依赖同样钉在 `^0.2.2-rc.5`）。仍停留在 `0.2.1-rc.x` 的环境请固定 `#v0.1.0`；从 `0.1.0` 升到 `0.1.1` 需要先把宿主升级到 `0.2.2-rc.5+`。
 
 本地开发时用 `file:` 指向 checkout：
 
@@ -97,13 +99,15 @@ It does **not** implement any ACP client: each target mounts one official provid
 
 ```powershell
 # pinned version (recommended)
-dsh plugin --profile <profile> add github:NewSpringWei/dsh-subagent-acp-ui#v0.1.0
+dsh plugin --profile <profile> add github:NewSpringWei/dsh-subagent-acp-ui#v0.1.1
 
 # or follow main
 dsh plugin --profile <profile> add github:NewSpringWei/dsh-subagent-acp-ui
 ```
 
 Restart the instance after installing, then configure targets under "Plugins → ACP Subagents".
+
+> **Compatibility**: since `0.1.1` this plugin requires DSH ≥ `0.2.2-rc.5` (`engines.dsh`; peer dependencies are pinned to `^0.2.2-rc.5` as well). Pin `#v0.1.0` if you are still on `0.2.1-rc.x`; upgrading from `0.1.0` to `0.1.1` requires upgrading the host first.
 
 For local development, point `file:` at the checkout:
 

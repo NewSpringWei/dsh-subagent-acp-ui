@@ -1,6 +1,6 @@
 {
   "name": "dsh-subagent-acp-ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Configuration page, handshake probe, and routing skill for the official DeepSeek Harness ACP subagent provider: multiple ACP targets without hand-editing YAML.",
   "repository": {
     "type": "git",
